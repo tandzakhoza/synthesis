@@ -1,4 +1,4 @@
-module Synthesis.Tests
+emodule Synthesis.Tests
 open NUnit.Framework
 open FsUnit
 open Preamble
