@@ -87,8 +87,17 @@ let month input  =
 			 |12 -> ("December", 31)
 	|_ -> failwith "Not a month"
 
-let toBinary _ =
- failwith "Not implemented"
+let toBinary integer =
+    match integer < 0 with 
+    |true -> failwith "Not implemented"
+    |_ -> 
+    let rec binary num acc =
+        match  num with 
+        |0 -> "0"
+        |1 -> "1"+ acc // basecase
+        |_ -> let tostring = string (num%2)
+              binary (num/2) (tostring+acc)
+    binary integer ""   
 
 let bizFuzz n =	
 	match n < 0 with 
