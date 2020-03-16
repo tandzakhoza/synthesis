@@ -116,11 +116,12 @@ let monthDay day year =
     match day>=1 && day<= numofdays with
     |false -> failwith "error"
     |_ -> let rec count num acc=
-            match month num, acc=day, isLeap year with
-            |("February", 28),_,true -> count (num+1) (acc+29)
+            let _, n = month 1
+            match month num, day<=acc, isLeap year with
+            |("February", 28),false,true -> count (num+1) (acc+29)
             |(a, b), true, _->  a //basecase
             |(a, b), _, _-> count (num+1) (acc+b)
-          count 1 0
+          count 1 n
     
 
 let sqrt n =
