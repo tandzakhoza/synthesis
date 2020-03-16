@@ -115,7 +115,7 @@ let monthDay day year =
         |_-> 365
     match day>=1 && day<= numofdays with
     |false -> failwith "error"
-    |_ -> let rec count num acc=
+    |_ ->   let rec count num acc=
             let _, n = month 1
             match month num, day<=acc, isLeap year with
             |("February", 28),false,true -> count (num+1) (acc+29)
